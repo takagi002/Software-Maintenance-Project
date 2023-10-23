@@ -1,18 +1,16 @@
-export class Recipes{
-    constructor(public Code:Number,
-public Name:string,
-public CategoryCode:Number,
-public PreparationTime:Number, 
-public DifficultyLevel:Number ,
-public DateAdded :Date,
-public  ComponentsList:string,
-public PreparationMethod:any, 
-public  OwnerCode:Number ,
-public  ImgSrc:string ,
-public IsSeen :Boolean,
-public Description:string ){
-
-}
-
-    
+export class Recipes {
+  constructor(
+    public Code: number,
+    public Name: string,
+    public CategoryCode: number,
+    public PreparationTime: number,
+    public DifficultyLevel: number,
+    public DateAdded: Date,
+    public ComponentsList: string,
+    public PreparationMethod: any,
+    public OwnerCode: number,
+    public ImgSrc: string,
+    public IsSeen: boolean,
+    public Description: string,
+  ) {}
 }
