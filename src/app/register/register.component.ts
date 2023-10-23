@@ -33,12 +33,10 @@ export class RegisterComponent implements OnInit {
           '',
           Validators.compose([
             Validators.required,
-            Validators.pattern('[a-zA-Z0-9.]{6,}@[a-zA-Z]{3,7}.[a-z]{3}'),
           ]),
         ),
         password: new FormControl('', [
           Validators.required,
-          Validators.maxLength(8),
         ]),
         confirmPassword: new FormControl('', Validators.required),
       },

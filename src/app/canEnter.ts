@@ -13,7 +13,7 @@ export class CanEnter implements CanActivate {
     Swal.fire({
       icon: 'error',
       title: 'Oops...',
-      text: 'השימוש מותנה ברישום מראש!',
+      text: 'This user is not registered!',
     });
     return false;
   }
