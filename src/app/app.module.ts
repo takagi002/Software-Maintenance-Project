@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule, routes } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { OneRecipeDetailsComponent } from './one-recipe-details/one-recipe-details.component';
@@ -32,7 +32,6 @@ import { AddRecipeComponent } from './add-recipe/add-recipe.component';
      ReactiveFormsModule,
      AppRoutingModule,
     HttpClientModule,
-    // RouterModule.forRoot(routes)Location
   ],
   providers: [],
   bootstrap: [AppComponent]

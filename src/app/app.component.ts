@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Recipes } from 'src/models/Recipe';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +6,8 @@ import { Recipes } from 'src/models/Recipe';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  myRecipe:Recipes=null;//del
   title = 'RecipesProjectScss';
-  logout() {
-    sessionStorage.removeItem("myUser");
+  logout(): void {
+    sessionStorage.removeItem('myUser');
   }
 }
