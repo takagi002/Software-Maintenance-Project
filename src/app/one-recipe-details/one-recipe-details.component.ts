@@ -15,7 +15,7 @@ export class OneRecipeDetailsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  showDetails() {
+  showDetails(): void {
     this.recipeServies.myRecipe = this.myRecipe;
     this.router.navigate(['recipeDetails']);
   }

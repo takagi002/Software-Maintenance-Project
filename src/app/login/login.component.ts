@@ -6,54 +6,55 @@ import { UserService } from '../user.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
   user: User = null;
-  isExist: boolean = true;
-  isPasswordTrue: boolean = true;
+  isExist = true;
+  isPasswordTrue = true;
   isValid: any;
 
-  constructor(public userService: UserService, public router: Router) { }
+  constructor(
+    public userService: UserService,
+    public router: Router,
+  ) {}
 
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-
-  }
-
-  checkAndLogin(pwd, name) {
-
-    this.user = new User(0, name, " ", " ", pwd);
+  checkAndLogin(pwd, name): void {
+    this.user = new User(0, name, ' ', ' ', pwd);
     this.userService.checkLogin(this.user).subscribe(
-      secc => {
+      (secc) => {
         this.login(secc);
       },
-      error => { console.log(error) }
-    )
-
+      (error) => {
+        console.log(error);
+      },
+    );
   }
-  login(secc) {
+  login(secc): void {
     this.isValid = secc;
-    if (this.isValid == 1) {
+    if (this.isValid === 1) {
       this.getUser(this.user);
-      this.router.navigate(["allRecipes"]);
-    }
-    else {
-      if (this.isValid == 2)
-        this.isPasswordTrue = false;
+      this.router.navigate(['allRecipes']);
+    } else {
+      if (this.isValid === 2) { this.isPasswordTrue = false; }
       else {
-        if (this.isValid == 3)
-          this.isExist = false;
+        if (this.isValid === 3) { this.isExist = false; }
       }
     }
   }
-  goToRegister(name) {
-    this.router.navigate(["register", name]);
+  goToRegister(name): void {
+    this.router.navigate(['register', name]);
   }
-  getUser(user) {
+  getUser(user): void {
     this.userService.getUser(user).subscribe(
-      secc => { sessionStorage.setItem("myUser", JSON.stringify(secc)) },
-      error => { console.log(error) }
-    )
+      (secc) => {
+        sessionStorage.setItem('myUser', JSON.stringify(secc));
+      },
+      (error) => {
+        console.log(error);
+      },
+    );
   }
 }
