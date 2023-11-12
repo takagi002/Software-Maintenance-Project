@@ -61,9 +61,7 @@ export class AddRecipeComponent implements OnInit {
       if (e.target.value === '') {
         this.Components.splice(e.target.id, 1);
       } else {
-        if (
-          !this.Components.some(() => {})
-        ) {
+        if (!this.Components.some(() => {})) {
           this.Components[+e.target.id] = e.target.value;
         }
       }
@@ -71,7 +69,9 @@ export class AddRecipeComponent implements OnInit {
   }
 
   addInput(e): void {
-    if (e.target.id === this.Components.length - 1) { this.Components.push(''); }
+    if (e.target.id === this.Components.length - 1) {
+      this.Components.push('');
+    }
   }
 
   checkMethod(e): void {
@@ -80,9 +80,7 @@ export class AddRecipeComponent implements OnInit {
         this.methods.splice(e.target.id, 1);
       } else {
         console.log(this.Components);
-        if (
-          !this.methods.some(() => {})
-        ) {
+        if (!this.methods.some(() => {})) {
           this.methods[+e.target.id] = e.target.value;
         }
       }
@@ -90,7 +88,9 @@ export class AddRecipeComponent implements OnInit {
   }
 
   addInputMethod(e): void {
-    if (e.target.id === this.methods.length - 1) { this.methods.push(''); }
+    if (e.target.id === this.methods.length - 1) {
+      this.methods.push('');
+    }
   }
   sendForm(): void {
     this.addedRecipe.OwnerCode = JSON.parse(

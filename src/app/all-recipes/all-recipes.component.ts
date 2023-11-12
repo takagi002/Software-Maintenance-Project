@@ -42,9 +42,11 @@ export class AllRecipesComponent implements OnInit {
   }
   isSameCategory(categoryCode): any {
     console.log(this.categories);
-    return this.categories.find(
-      (c) => c.Code === categoryCode && c.Name.includes(this.category),
-    ) !== undefined;
+    return (
+      this.categories.find(
+        (c) => c.Code === categoryCode && c.Name.includes(this.category),
+      ) !== undefined
+    );
   }
   filter(): void {
     this.RecipesArr = this.origenalRecipes;

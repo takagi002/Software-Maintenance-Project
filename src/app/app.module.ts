@@ -24,16 +24,16 @@ import { AddRecipeComponent } from './add-recipe/add-recipe.component';
     RecipeDetailsComponent,
     HoursPipe,
     EditComponent,
-    AddRecipeComponent
+    AddRecipeComponent,
   ],
   imports: [
     BrowserModule,
-     FormsModule,
-     ReactiveFormsModule,
-     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
     HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
