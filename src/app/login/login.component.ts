@@ -38,9 +38,12 @@ export class LoginComponent implements OnInit {
       this.getUser(this.user);
       this.router.navigate(['allRecipes']);
     } else {
-      if (this.isValid === 2) { this.isPasswordTrue = false; }
-      else {
-        if (this.isValid === 3) { this.isExist = false; }
+      if (this.isValid === 2) {
+        this.isPasswordTrue = false;
+      } else {
+        if (this.isValid === 3) {
+          this.isExist = false;
+        }
       }
     }
   }

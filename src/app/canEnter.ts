@@ -8,7 +8,9 @@ import Swal from 'sweetalert2';
 @Injectable({ providedIn: 'root' })
 export class CanEnter implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
-    if (null != sessionStorage.getItem('myUser')) { return true; }
+    if (null != sessionStorage.getItem('myUser')) {
+      return true;
+    }
 
     Swal.fire({
       icon: 'error',

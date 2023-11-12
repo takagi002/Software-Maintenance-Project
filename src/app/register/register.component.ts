@@ -29,15 +29,8 @@ export class RegisterComponent implements OnInit {
       {
         name: new FormControl(this.loginName, Validators.required),
         address: new FormControl('', Validators.required),
-        mail: new FormControl(
-          '',
-          Validators.compose([
-            Validators.required,
-          ]),
-        ),
-        password: new FormControl('', [
-          Validators.required,
-        ]),
+        mail: new FormControl('', Validators.compose([Validators.required])),
+        password: new FormControl('', [Validators.required]),
         confirmPassword: new FormControl('', Validators.required),
       },
       ConfirmValidation.confirm('password', 'confirmPassword'),
@@ -67,7 +60,9 @@ export class RegisterComponent implements OnInit {
       icon: 'success',
       confirmButtonText: 'to see the recipes',
     }).then((result) => {
-      if (result.isConfirmed === true) { this.router.navigate(['allRecipes']); }
+      if (result.isConfirmed === true) {
+        this.router.navigate(['allRecipes']);
+      }
     });
   }
   getUser(user): void {

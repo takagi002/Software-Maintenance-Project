@@ -5,16 +5,18 @@ import { RecipeService } from '../recipe.service';
 @Component({
   selector: 'app-one-recipe-details',
   templateUrl: './one-recipe-details.component.html',
-  styleUrls: ['./one-recipe-details.component.scss']
+  styleUrls: ['./one-recipe-details.component.scss'],
 })
 export class OneRecipeDetailsComponent implements OnInit {
   @Input()
   myRecipe;
 
-  constructor(public router: Router, private recipeServies: RecipeService) { }
+  constructor(
+    public router: Router,
+    private recipeServies: RecipeService,
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   showDetails(): void {
     this.recipeServies.myRecipe = this.myRecipe;
     this.router.navigate(['recipeDetails']);
