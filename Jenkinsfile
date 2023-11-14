@@ -1,19 +1,14 @@
 pipeline {
   agent any
   stages {
-          stage('Checkout') {
-              steps {
-                  checkout scm
-              }
-          }
-
-          stage('Build') {
-              steps {
-                  script {
-                      sh 'npm install'
-                  }
-              }
-          }
+    stage('Build') {
+        steps {
+            script {
+                sh 'npm install'
+                sh 'ng build'
+            }
+        }
+    }
 
     stage('Test') {
       parallel {
@@ -25,8 +20,19 @@ pipeline {
           }
         }
         stage('Unit tests') {
-            steps { }
+            steps {
+              script {
+                sh 'ng test'
+              }
+            }
         }
+        stage('End-To-End tests') {
+                    steps {
+                      script {
+                        sh 'ng e2e'
+                      }
+                    }
+                }
       }
     }
   }
