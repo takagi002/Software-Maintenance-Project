@@ -1,9 +1,21 @@
 pipeline {
   agent any
   stages {
-    stage('Install') {
-      steps { sh 'npm install' }
-    }
+          stage('Checkout') {
+              steps {
+                  checkout scm
+              }
+          }
+
+          stage('Build') {
+              steps {
+                  script {
+                      // Install Node.js dependencies and build Angular app
+                      sh 'npm install'
+                      sh 'npm run build'
+                  }
+              }
+          }
 
     stage('Test') {
       parallel {
@@ -14,10 +26,6 @@ pipeline {
             steps { sh 'npm run-script test' }
         }
       }
-    }
-
-    stage('Build') {
-      steps { sh 'npm run-script build' }
     }
   }
 }
