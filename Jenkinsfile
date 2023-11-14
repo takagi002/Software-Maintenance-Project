@@ -4,8 +4,8 @@ pipeline {
     stage('Build') {
         steps {
             script {
-                sh 'npm install'
-                sh 'ng build'
+                bat 'npm install'
+                bat 'ng build'
             }
         }
     }
@@ -15,24 +15,24 @@ pipeline {
         stage('Static code analysis') {
           steps {
             script {
-              sh 'npm run lint'
+              bat 'npm run lint'
             }
           }
         }
         stage('Unit tests') {
-            steps {
-              script {
-                sh 'ng test'
-              }
+          steps {
+            script {
+              bat 'ng test'
             }
+          }
         }
         stage('End-To-End tests') {
-                    steps {
-                      script {
-                        sh 'ng e2e'
-                      }
-                    }
-                }
+          steps {
+            script {
+              bat 'ng e2e'
+            }
+          }
+        }
       }
     }
   }
