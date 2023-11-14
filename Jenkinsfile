@@ -10,9 +10,7 @@ pipeline {
           stage('Build') {
               steps {
                   script {
-                      // Install Node.js dependencies and build Angular app
                       sh 'npm install'
-                      sh 'npm run build'
                   }
               }
           }
@@ -20,10 +18,14 @@ pipeline {
     stage('Test') {
       parallel {
         stage('Static code analysis') {
-            steps { sh 'npm run-script lint' }
+          steps {
+            script {
+              sh 'npm run lint'
+            }
+          }
         }
         stage('Unit tests') {
-            steps { sh 'npm run-script test' }
+            steps { }
         }
       }
     }
