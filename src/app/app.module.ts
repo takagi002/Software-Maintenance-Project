@@ -13,6 +13,7 @@ import { RecipeDetailsComponent } from './recipe-details/recipe-details.componen
 import { HoursPipe } from './hours.pipe';
 import { EditComponent } from './edit/edit.component';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
+import {SandwichMenuComponent} from "./sandwich-menu/sandwich-menu.component";
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AddRecipeComponent } from './add-recipe/add-recipe.component';
     HoursPipe,
     EditComponent,
     AddRecipeComponent,
+    SandwichMenuComponent,
   ],
   imports: [
     BrowserModule,
