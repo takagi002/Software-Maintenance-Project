@@ -7,5 +7,9 @@ import {MatMenuModule} from '@angular/material/menu';
   styleUrls: ['./sandwich-menu.component.scss'],
 })
 export class SandwichMenuComponent {
+   loggedIn = sessionStorage.getItem('myUser');
 
+  logout(): void {
+    sessionStorage.removeItem('myUser');
+  }
 }
