@@ -14,6 +14,9 @@ import { HoursPipe } from './hours.pipe';
 import { EditComponent } from './edit/edit.component';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import {SandwichMenuComponent} from "./sandwich-menu/sandwich-menu.component";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatButtonModule} from "@angular/material/button";
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,9 @@ import {SandwichMenuComponent} from "./sandwich-menu/sandwich-menu.component";
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
+    MatMenuModule,
+    MatButtonModule,
+    NoopAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
