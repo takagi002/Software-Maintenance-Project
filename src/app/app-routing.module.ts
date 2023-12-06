@@ -20,6 +20,7 @@ export const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   { path: 'register/:name', component: RegisterComponent },
+  { path: 'home/register', component: RegisterComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'allRecipes', component: AllRecipesComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
