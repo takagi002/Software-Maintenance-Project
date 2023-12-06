@@ -1,31 +1,5 @@
-
-<nav class=" navbar navbar-expand-sm navbar-light bg-light"  data-toggle="affix">
-    <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
-        <a class="navbar-brand" href="#">Brand</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse text-center" id="navbarsExample11">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" (click)="logout()">Logout</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="login">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="register" >Register</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" routerLink="add">Add Recipe</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="allRecipes">View All Recipes</a>
-                </li>
-
-            </ul>
-        </div>
-    </div>
+<nav class="navbar navbar-expand-sm navbar-light menu_bar" data-toggle="affix">
+        <a class="navbar-brand" href="#">Recipe Site</a>
+        <sandwich-menu class="right_item"></sandwich-menu>
 </nav>
-<!-- <div [ngStyle]="{backgroundImage:'url(../assets/images/back.jpg)'}" ></div> -->
-<router-outlet ></router-outlet>
+<router-outlet></router-outlet>

@@ -7,9 +7,10 @@ import { EditComponent } from './edit/edit.component';
 import { LoginComponent } from './login/login.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 import { RegisterComponent } from './register/register.component';
+import {LandingPageComponent} from "./landing-page/landing-page.component";
 
 export const routes: Routes = [
-  { path: 'home', component: LoginComponent },
+  { path: 'home', component: LandingPageComponent },
   { path: 'add', component: AddRecipeComponent, canActivate: [CanEnter] },
   { path: 'edit', component: EditComponent },
   {

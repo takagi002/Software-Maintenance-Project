@@ -1,2 +1,10 @@
 @import '../variables.scss';
 
+.right_item {
+  margin-right: 0px;
+  margin-left: auto;
+}
+
+.menu_bar {
+  background-color: $yellow-color;
+}
