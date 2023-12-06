@@ -1,0 +1,14 @@
+<div>
+  <button mat-button [matMenuTriggerFor]="menu">
+    <mat-icon aria-hidden="false">list</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button class="nav-item" routerLink="allRecipes" mat-menu-item>View All Recipes</button>
+    <button class="nav-item" routerLink="add" mat-menu-item>Add Recipes</button>
+    <button class="nav-item" routerLink="login" mat-menu-item>Login/Register</button>
+    <button mat-menu-item disabled="{{loggedIn}}}" (click)="logout()">Logout</button>
+  </mat-menu>
+</div>
+
+
+

@@ -7,9 +7,10 @@ import { EditComponent } from './edit/edit.component';
 import { LoginComponent } from './login/login.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 import { RegisterComponent } from './register/register.component';
+import {LandingPageComponent} from "./landing-page/landing-page.component";
 
 export const routes: Routes = [
-  { path: 'home', component: LoginComponent },
+  { path: 'home', component: LandingPageComponent },
   { path: 'add', component: AddRecipeComponent, canActivate: [CanEnter] },
   { path: 'edit', component: EditComponent },
   {
@@ -19,6 +20,7 @@ export const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   { path: 'register/:name', component: RegisterComponent },
+  { path: 'home/register', component: RegisterComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'allRecipes', component: AllRecipesComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
