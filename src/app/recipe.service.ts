@@ -11,23 +11,23 @@ export class RecipeService {
   myRecipe: Recipes;
   getAllRecipes(): Observable<any> {
     return this.http.get<Recipes[]>(
-      'https://localhost:44358/api/recipes/allRecipes',
+      'http://localhost:3000/api/recipes/allRecipes',
     );
   }
   getImgSrc(): Observable<any> {
     return this.http.get<string[]>(
-      'https://localhost:44358/api/recipes/images',
+      'http://localhost:3000/api/recipes/images',
     );
   }
   addRecipe(recipe): Observable<any> {
     return this.http.post<any>(
-      'https://localhost:44358/api/recipes/add',
+      'http://localhost:3000/api/recipes/add',
       recipe,
     );
   }
   changeRecipe(recipe): Observable<any> {
     return this.http.post<any>(
-      'https://localhost:44358/api/recipes/change',
+      'http://localhost:3000/api/recipes/change',
       recipe,
     );
   }

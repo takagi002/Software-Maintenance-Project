@@ -10,12 +10,12 @@ export class CategoryService {
   constructor(public http: HttpClient) {}
   getAllCategory(): Observable<Category[]> {
     return this.http.get<Category[]>(
-      'https://localhost:44358/api/category/allCategory',
+      'http://localhost:3000/api/category/allCategory',
     );
   }
   getCategoryByCode(code): Observable<any> {
     return this.http.post<Category>(
-      'https://localhost:44358/api/category/categoryByCode',
+      'http://localhost:3000/api/category/categoryByCode',
       code,
     );
   }

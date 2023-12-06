@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ConfirmValidation } from '../ConfirmValidation';
 import { UserService } from '../user.service';
+import {User} from "../../models/User";
 
 @Component({
   selector: 'app-register',
@@ -38,8 +39,13 @@ export class RegisterComponent implements OnInit {
   }
 
   send(): void {
-    const user = { ...this.registerForm.value };
-    user.code = -1;
+    const user = new User(
+      -1,
+      this.registerForm.value.name,
+      this.registerForm.value.address,
+      this.registerForm.value.mail,
+      this.registerForm.value.password
+    );
     this.userService.addUser(user).subscribe(
       (secc) => {
         console.log(secc);
