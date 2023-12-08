@@ -22,15 +22,13 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   checkAndLogin(pwd, name): void {
-    this.user = new User(0, name, ' ', ' ', pwd);
-    this.userService.checkLogin(this.user).subscribe(
-      (secc) => {
-        this.login(secc);
-      },
-      (error) => {
-        console.log(error);
-      },
-    );
+    this.userService.getUserByName(name).subscribe(next => {
+      if (next.Password == pwd) {
+        this.user = next;
+        sessionStorage.setItem('myUser', JSON.stringify(this.user));
+      }
+    })
+    this.router.navigate(['allRecipes']);
   }
   login(secc): void {
     this.isValid = secc;
@@ -47,6 +45,7 @@ export class LoginComponent implements OnInit {
       }
     }
   }
+
   goToRegister(name): void {
     this.router.navigate(['register', name]);
   }
