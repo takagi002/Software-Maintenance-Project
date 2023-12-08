@@ -10,12 +10,6 @@ export class UserService {
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>('http://localhost:3000/api/user/allUsers');
   }
-  checkLogin(user): Observable<number> {
-    return this.http.post<number>(
-      'http://localhost:3000/api/user/login',
-      user,
-    );
-  }
   addUser(user): Observable<any> {
     return this.http.post<any>('http://localhost:3000/api/user/add', user);
   }
@@ -24,5 +18,9 @@ export class UserService {
       'http://localhost:3000/api/user/getUser',
       user,
     );
+  }
+
+  getUserByName(name: string): Observable<any> {
+    return this.http.post<User>('http://localhost:3000/api/user/byName', {name});
   }
 }
