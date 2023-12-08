@@ -13,6 +13,7 @@ import { Location } from '@angular/common';
 })
 export class RecipeDetailsComponent implements OnInit {
   myRecipe: Recipes = this.recipeServies.myRecipe;
+  recipeDirections: string[];
   categoryDetails: Category;
   componentArr: string[];
   levelStars: any = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -27,10 +28,9 @@ export class RecipeDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.myRecipe);
     this.componentArr = this.myRecipe.ComponentsList.split(',');
-    console.log(this.componentArr);
-
+    this.recipeDirections = this.myRecipe.PreparationMethod.split(/[,.]/);
+    this.recipeDirections.pop();
     this.categoryServise
       .getCategoryByCode(this.myRecipe.CategoryCode)
       .subscribe(

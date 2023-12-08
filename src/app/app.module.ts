@@ -10,7 +10,6 @@ import { AllRecipesComponent } from './all-recipes/all-recipes.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
-import { HoursPipe } from './hours.pipe';
 import { EditComponent } from './edit/edit.component';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import {SandwichMenuComponent} from "./sandwich-menu/sandwich-menu.component";
@@ -19,6 +18,7 @@ import {MatButtonModule} from "@angular/material/button";
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {LandingPageComponent} from "./landing-page/landing-page.component";
 import {MatIconModule} from "@angular/material/icon";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -28,23 +28,23 @@ import {MatIconModule} from "@angular/material/icon";
     LoginComponent,
     AllRecipesComponent,
     RecipeDetailsComponent,
-    HoursPipe,
     EditComponent,
     AddRecipeComponent,
     SandwichMenuComponent,
     LandingPageComponent
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    MatMenuModule,
-    MatButtonModule,
-    NoopAnimationsModule,
-    MatIconModule,
-  ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        MatMenuModule,
+        MatButtonModule,
+        NoopAnimationsModule,
+        MatIconModule,
+        MatCheckboxModule,
+    ],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -1,7 +1,7 @@
 @import '../../variables.scss';
 html, body {
     height: 100%;
-  
+
 }
 
 body {
@@ -18,7 +18,7 @@ strong {
 }
 
 h3 {
-  
+
     background:$yellow-color;
     padding: 0.8em 16px;
     color: #fff;
@@ -46,11 +46,9 @@ img {
 }
 
 .recipe {
-    margin-bottom: 1em;
+    margin-top: 20px;
     background: #fff;
     box-shadow: 0px 1px 6px rgba(0,0,0,0.1);
-    max-width: 1100px;
-    margin: 0 auto;
 }
 
 .recipe-flex {
@@ -88,100 +86,5 @@ img {
     .stages {
         margin-left: 24px;
     }
-} 
-
-/* the outer list */
-.steps {
-  margin: 2em 0 0 -3px;
-  padding: 0 1em 0 0;
-  display: flex;
-  flex-wrap: wrap;
-  list-style-type: none;
-  counter-reset: steps; /* alternative to built-in list style that we can style */
 }
 
-/* the steps (li) */
-.steps > li {
-  padding: 28px 0 0 12px;
-  flex: 1 1 100%;
-  position: relative;
-  border-left: 3px solid;
-  counter-increment: steps;
-}
-
-/* this isn't needed, but I prefer some spacing at the bottom */
-.steps > li:last-child {
-  padding-bottom: 2em;
-}
-
-/* the smallish description label next to the bubble */
-.steps > li::before {
-  content: "Step " counter(steps) ": ";
-  position: absolute;
-  top: 3px;
-  left: 24px;
-  font-style: italic;
-  color: #777;
-  font-size: 12px;
-}
-
-/* the bubble with the number in it */
-.steps > li::after {
-  position: absolute;
-  top: 0;
-  left: -16px;
-  background: #fff;
-  border-radius: 20px;
-  width: 24px;
-  height: 24px;
-  display: block;
-  text-align: center;
-  font-weight: 800;
-  line-height: 26px;
-  content: counter(steps);
-  border: 3px solid;
-}
-
-/* the inner list within a step */
-.steps ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  margin-left: 12px;
-  padding-top: 3px;
-}
-
-.steps ul li {
-  position: relative;
-}
-
-.steps ul li::before {
-  content: "";
-  width: 10px;
-  height: 4px;
-  display: block;
-  position: absolute;
-  top: 10px;
-  left: -27px;
-  border-radius: 10px;
-}
-
-/* Let's color our steps */
-.steps > li:nth-child(1),
-.steps > li:nth-child(1)::after { border-color:$yellow-color; }
-.steps > li:nth-child(1) li::before { background-color:$yellow-color; }
-.steps > li:nth-child(2),
-.steps > li:nth-child(2)::after { border-color:$yellow-color; }
-.steps > li:nth-child(2) li::before { background-color:$yellow-color; }
-.steps > li:nth-child(3),
-.steps > li:nth-child(3)::after { border-color:$yellow-color; }
-.steps > li:nth-child(3) li::before { background-color:$yellow-color; }
-.steps > li:nth-child(4),
-.steps > li:nth-child(4)::after { border-color:$yellow-color; }
-.steps > li:nth-child(4) li::before { background-color:$yellow-color; }
-.steps > li:nth-child(5),
-.steps > li:nth-child(5)::after { border-color:$yellow-color; }
-.steps > li:nth-child(5) li::before { background-color:$yellow-color; }
-.steps > li:nth-child(6),
-.steps > li:nth-child(6)::after { border-color:$yellow-color; }
-.steps > li:nth-child(6) li::before { background-color:$yellow-color; }
