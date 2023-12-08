@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('myUser', JSON.stringify(this.user));
       }
     })
+    this.router.navigate(['allRecipes']);
   }
   login(secc): void {
     this.isValid = secc;

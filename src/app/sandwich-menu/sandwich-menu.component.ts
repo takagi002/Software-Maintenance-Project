@@ -1,5 +1,6 @@
 import {Component} from "@angular/core";
-import {MatMenuModule} from '@angular/material/menu';
+import {UserService} from "../user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'sandwich-menu',
@@ -7,9 +8,16 @@ import {MatMenuModule} from '@angular/material/menu';
   styleUrls: ['./sandwich-menu.component.scss'],
 })
 export class SandwichMenuComponent {
-   loggedIn = sessionStorage.getItem('myUser');
+  constructor(
+    public router: Router,
+  ) {}
+   notLoggedIn(): boolean {
+     const user = sessionStorage.getItem('myUser');
+     return user == null;
+   }
 
   logout(): void {
     sessionStorage.removeItem('myUser');
+    this.router.navigate(['home']);
   }
 }
