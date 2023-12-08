@@ -9,7 +9,6 @@ export class Recipes {
     public ComponentsList: string,
     public PreparationMethod: any,
     public OwnerCode: number,
-    public ImgSrc: string,
     public IsSeen: boolean,
     public Description: string,
   ) {}

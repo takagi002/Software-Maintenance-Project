@@ -1,99 +1,76 @@
-<div class="page-body">
-    <div class="auth-form-wrapper register-form-wrapper">
+<div xmlns="http://www.w3.org/1999/html">
+    <div class="auth-form-wrapper">
         <form #myForm="ngForm" (ngSubmit)="sendForm();myForm.reset()" method="POST"
             action="https://bannerreview.co/register">
             <input type="hidden" name="_token" value="UCRvE8ogNi0xO8aHnKs3mFR9YxJLQ3JPObJIfSez">
             <div class="form-header">
-                <h2 class="text-center">add new recipe</h2>
+                <h2 class="text-center">Add New Recipe</h2>
             </div>
 
             <div class="form-row">
-                <div class="input-wrapper">
-                    <input id="name" type="text" class="" name="name" [(ngModel)]="addedRecipe.Name" required
-                        autofocus="">
-                    <label for="name">Name</label>
-
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="input-wrapper">
-                    <input id="email" type="number" class="" name="preparationTime"
-                        [(ngModel)]="addedRecipe.PreparationTime" #preparationTime="ngModel" min="1" required
-                        autofocus="">
-                    <label for="name">PreparationTime</label>
-
-                </div>
-                <div class="error" *ngIf="!preparationTime.valid&&preparationTime.touched">שדה זמן הכנה אינו תקין!
+                <div>
+                    <label for="add-name">Name</label>
+                    <br>
+                    <input id="add-name" type="text" name="name" [(ngModel)]="addedRecipe.Name" required>
                 </div>
             </div>
 
             <div class="form-row">
-                <div class="input-wrapper">
-                    <input id="password" type="number" class="" name="difficultyLevel"
-                        [(ngModel)]="addedRecipe.DifficultyLevel" #difficultyLevel="ngModel" min="1" max="5" required
-                        autofocus="">
-                    <label for="name">DifficultyLevel</label>
-
+                <div>
+                    <label for="prep-time">Preparation Time (minutes)</label>
+                    <br>
+                    <input id="prep-time" type="number" name="preparationTime"
+                        [(ngModel)]="addedRecipe.PreparationTime" #preparationTime="ngModel" min="1" required>
                 </div>
-                <div class="error" *ngIf="!difficultyLevel.valid&&difficultyLevel.touched">שדה זה אינו תקין! </div>
+                <div class="error" *ngIf="!preparationTime.valid&&preparationTime.touched">
+                    Preparation time is required!
+                </div>
             </div>
 
+            <div class="form-row">
+                <div>
+                    <label for="difficulty">Difficulty Level (1-5)</label>
+                    <br>
+                    <input id="difficulty" type="number" name="difficultyLevel"
+                        [(ngModel)]="addedRecipe.DifficultyLevel" #difficultyLevel="ngModel" min="1" max="5" required>
+                </div>
+                <div class="error" *ngIf="!difficultyLevel.valid&&difficultyLevel.touched">
+                    Difficultly is required!
+                </div>
+            </div>
 
             <div>
-                <div class="select-name"><label>components list :</label></div>
-                <div class="form-row" *ngFor="let component of Components,let in=index,trackBy:trakbiy">
-
-                    <div class="input-wrapper">
-                        <input type="text" [id]="in" [(ngModel)]="Components[in]" (click)="addInput($event)"
-                            (blur)="check($event)">
-                        <label>ComponentsList {{in}}</label>
-
+                <div class="form-row">
+                    <div style="padding-bottom: 10px">
+                        <label for="ingredients">Ingredients (comma separated)</label>
+                        <br>
+                        <textarea style="width: 300px" id="ingredients" type="text" [(ngModel)]="addedRecipe.ComponentsList"></textarea>
                     </div>
-
                 </div>
             </div>
+
             <div>
                 <div class="form-row">
-                    <div class="input-wrapper">
-                        <input id="name" type="text" class="" name="description" [(ngModel)]="addedRecipe.Description"
-                            required autofocus="">
-                        <label for="name">Description</label>
-
+                    <div style="padding-top: 10px; padding-bottom: 10px">
+                        <label for="description">Description</label>
+                        <br>
+                        <textarea style="width: 300px"  id="description" type="text" class="" name="description" [(ngModel)]="addedRecipe.Description"></textarea>
                     </div>
                 </div>
-                <div class="select-name"><label>ImgSrc :</label></div>
                 <div class="form-row">
-
-                    <div class="input-wrapper">
-
-                        <select [(ngModel)]="addedRecipe.ImgSrc" name="imgSrc" class="" required autofocus="">
-                            <option *ngFor="let i of images" [value]="i">
-                                {{i}}
-                            </option>
-                        </select>
-
-
-
-                    </div>
-                </div>
-                <div class="select-name"><label>IsSeen :</label></div>
-                <div class="form-row">
-                    <div class="input-wrapper">
+                    <div style="padding-top: 25px">
                         <div class="form-check-inline">
                             <label class="form-check-label">
-                                <input type="checkbox" id="name" class="form-check-input" name="isSeen"
-                                    [(ngModel)]="addedRecipe.IsSeen" required autofocus="">
+                                <mat-checkbox id="display" name="isSeen"
+                                              [(ngModel)]="addedRecipe.IsSeen" required>Is Displayed</mat-checkbox>
                             </label>
                         </div>
                     </div>
                 </div>
-
-                <div class="select-name"><label>Category :</label></div>
                 <div class="form-row">
-                    <div class="input-wrapper">
-                        <select [(ngModel)]="addedRecipe.CategoryCode" name="categoryCode" class="" required
-                            autofocus="">
+                    <div class="select-name"><label>Category</label></div>
+                    <div>
+                        <select [(ngModel)]="addedRecipe.CategoryCode" name="categoryCode">
                             <option *ngFor="let c of categories" [value]="c.Code">
                                 {{c.Name}}
                             </option>
@@ -101,25 +78,21 @@
                     </div>
                 </div>
 
-
-                <div class="select-name"><label>motheds list :</label></div>
-                <div class="form-row" *ngFor="let method of methods,let in=index,trackBy:trakbiy">
-
-                    <div class="input-wrapper">
-                        <input type="text" [id]="in" [(ngModel)]="methods[in]" (click)="addInputMethod($event)"
-                            (blur)="checkMethod($event)">
-                        <label>method {{in}}</label>
-
+                <div class="form-row">
+                    <div>
+                        <label for="steps">Steps (comma separated)</label>
+                        <br>
+                        <textarea style="width: 300px" id="steps" name="steps" type="text" [(ngModel)]="addedRecipe.PreparationMethod"></textarea>
                     </div>
-
                 </div>
             </div>
-
-            <div class="form-action">
-                <div>
-                    <button type="submit" [disabled]="!myForm.valid" class="btn btn-primary">
-                        add form
-                    </button>
+            <div class="form-row">
+                <div class="form-action">
+                    <div style="padding-top: 20px">
+                        <button type="submit" [disabled]="!myForm.valid" class="btn btn-primary">
+                            add recipe
+                        </button>
+                    </div>
                 </div>
             </div>
         </form>
