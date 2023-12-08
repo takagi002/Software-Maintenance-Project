@@ -26,8 +26,7 @@ export class AddRecipeComponent implements OnInit {
     null,
     null,
     null,
-    null,
-    null,
+    null
   );
   constructor(
     public recipeService: RecipeService,
