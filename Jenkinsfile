@@ -32,6 +32,18 @@ pipeline {
             }
           }
         }
+        stage('Regression tests') {
+          steps {
+            script {
+              bat 'ng e2e'
+            }
+          }
+        }
+      }
+    }
+    Stage ('Cleanup'){
+      steps{
+
       }
     }
   }
