@@ -5,6 +5,9 @@ import { CategoryService } from '../category.service';
 import { RecipeService } from '../recipe.service';
 import Swal from 'sweetalert2';
 import { Location } from '@angular/common';
+import { ValueValidation } from "../utils/validation";
+
+
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
@@ -66,19 +69,6 @@ export class EditComponent implements OnInit {
     }
   }
 
-  checkMethod(e): void {
-    if (e.target.id !== this.methods.length - 1) {
-      if (e.target.value === '') {
-        this.methods.splice(e.target.id, 1);
-      } else {
-        console.log(this.Components);
-        if (!this.methods.some(() => {})) {
-          this.methods[+e.target.id] = e.target.value;
-        }
-      }
-    }
-  }
-
   addInputMethod(e): void {
     if (e.target.id === this.methods.length - 1) {
       this.methods.push('');
@@ -112,4 +102,6 @@ export class EditComponent implements OnInit {
       }
     });
   }
+
+  protected readonly ValueValidation = ValueValidation;
 }

@@ -84,7 +84,7 @@
 
                 <div class="input-wrapper">
                     <input type="text" [id]="in" name="{{in}}" [(ngModel)]="methods[in]"
-                        (click)="addInputMethod($event)" (blur)="checkMethod($event)">
+                        (click)="addInputMethod($event)" (blur)="ValueValidation.checkMethod($event, methods)">
                     <label>method {{in}}</label>
 
                 </div>
