@@ -19,7 +19,6 @@ export class UserService {
       user,
     );
   }
-
   getUserByName(name: string): Observable<any> {
     return this.http.post<User>('http://localhost:3000/api/user/byName', {name});
   }

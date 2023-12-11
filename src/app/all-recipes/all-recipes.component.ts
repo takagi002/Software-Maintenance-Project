@@ -34,28 +34,12 @@ export class AllRecipesComponent implements OnInit {
     );
     this.categories = Retrieval.retrieveCategories(this.categoryService) as Category[];
   }
-  isSameCategory(categoryCode): any {
-    console.log(this.categories);
-    return (
-      this.categories.find(
-        (c) => c.Code === categoryCode && c.Name.includes(this.category),
-      ) !== undefined
-    );
-  }
+
   filter(): void {
     this.RecipesArr = this.origenalRecipes;
-    if (this.name !== '') {
-      this._setPrepTime();
-    }
-    console.log(this.RecipesArr);
-    if (this.category !== '') {
-      this._setPrepTime()
-    }
-    console.log(this.RecipesArr);
-    if (this.time !== 0) {
-      this._setPrepTime();
-    }
-    console.log(this.RecipesArr);
+    if (this.name !== '') { this._setPrepTime(); }
+    if (this.category !== '') { this._setPrepTime() }
+    if (this.time !== 0) { this._setPrepTime(); }
   }
 
   _setPrepTime() {

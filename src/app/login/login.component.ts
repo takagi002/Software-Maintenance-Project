@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
   goToRegister(name): void {
     this.router.navigate(['register', name]);
   }
+
   getUser(user): void {
     this.userService.getUser(user).subscribe(
       (secc) => {
