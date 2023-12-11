@@ -5,6 +5,11 @@ import { CategoryService } from '../category.service';
 import { RecipeService } from '../recipe.service';
 import Swal from 'sweetalert2';
 import { Location } from '@angular/common';
+import { ValueValidation } from "../utils/validation";
+import {Retrieval} from "../utils/retrieval";
+import {Category} from "../../models/Category";
+
+
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
@@ -12,7 +17,6 @@ import { Location } from '@angular/common';
 })
 export class EditComponent implements OnInit {
   editedRecipe: Recipes = this.recipeService.myRecipe;
-  images: any = [];
   categories: any = [];
   Components: string[] = this.editedRecipe.ComponentsList.split(',');
   methods = this.editedRecipe.PreparationMethod;
@@ -27,22 +31,7 @@ export class EditComponent implements OnInit {
     // take care of variables
     this.methods.push('');
     this.Components.push('');
-    this.recipeService.getImgSrc().subscribe(
-      (secc) => {
-        this.images = secc;
-      },
-      (error) => {
-        console.log(error);
-      },
-    );
-    this.categoryService.getAllCategory().subscribe(
-      (secc) => {
-        this.categories = secc;
-      },
-      (error) => {
-        console.log(error);
-      },
-    );
+    this.categories = Retrieval.retrieveCategories(this.categoryService) as Category[];
   }
   // lists care
   trakbiy(index: number): any {
@@ -63,19 +52,6 @@ export class EditComponent implements OnInit {
   addInput(e): void {
     if (e.target.id === this.Components.length - 1) {
       this.Components.push('');
-    }
-  }
-
-  checkMethod(e): void {
-    if (e.target.id !== this.methods.length - 1) {
-      if (e.target.value === '') {
-        this.methods.splice(e.target.id, 1);
-      } else {
-        console.log(this.Components);
-        if (!this.methods.some(() => {})) {
-          this.methods[+e.target.id] = e.target.value;
-        }
-      }
     }
   }
 
@@ -112,4 +88,6 @@ export class EditComponent implements OnInit {
       }
     });
   }
+
+  protected readonly ValueValidation = ValueValidation;
 }

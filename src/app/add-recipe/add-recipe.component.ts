@@ -5,13 +5,13 @@ import { CategoryService } from '../category.service';
 import { RecipeService } from '../recipe.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import {Retrieval} from "../utils/retrieval";
 @Component({
   selector: 'app-add-recipe',
   templateUrl: './add-recipe.component.html',
   styleUrls: ['./add-recipe.component.scss'],
 })
 export class AddRecipeComponent implements OnInit {
-  images: string[];
   categories: Category[];
   Components: string[] = [''];
   methods: string[] = [''];
@@ -35,62 +35,9 @@ export class AddRecipeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.recipeService.getImgSrc().subscribe(
-      (secc) => {
-        this.images = secc;
-      },
-      (error) => {
-        console.log(error);
-      },
-    );
-    this.categoryService.getAllCategory().subscribe(
-      (secc) => {
-        this.categories = secc;
-      },
-      (error) => {
-        console.log(error);
-      },
-    );
-  }
-  trakbiy(index: number): any {
-    return index;
-  }
-  check(e): void {
-    if (e.target.id !== this.Components.length - 1) {
-      if (e.target.value === '') {
-        this.Components.splice(e.target.id, 1);
-      } else {
-        if (!this.Components.some(() => {})) {
-          this.Components[+e.target.id] = e.target.value;
-        }
-      }
-    }
+    this.categories = Retrieval.retrieveCategories(this.categoryService) as Category[];
   }
 
-  addInput(e): void {
-    if (e.target.id === this.Components.length - 1) {
-      this.Components.push('');
-    }
-  }
-
-  checkMethod(e): void {
-    if (e.target.id !== this.methods.length - 1) {
-      if (e.target.value === '') {
-        this.methods.splice(e.target.id, 1);
-      } else {
-        console.log(this.Components);
-        if (!this.methods.some(() => {})) {
-          this.methods[+e.target.id] = e.target.value;
-        }
-      }
-    }
-  }
-
-  addInputMethod(e): void {
-    if (e.target.id === this.methods.length - 1) {
-      this.methods.push('');
-    }
-  }
   sendForm(): void {
     this.addedRecipe.OwnerCode = JSON.parse(
       sessionStorage.getItem('myUser'),

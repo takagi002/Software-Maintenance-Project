@@ -3,6 +3,7 @@ import { Category } from 'src/models/Category';
 import { Recipes } from 'src/models/Recipe';
 import { CategoryService } from '../category.service';
 import { RecipeService } from '../recipe.service';
+import {Retrieval} from "../utils/retrieval";
 
 @Component({
   selector: 'app-all-recipes',
@@ -31,14 +32,7 @@ export class AllRecipesComponent implements OnInit {
         console.log(error);
       },
     );
-    this.categoryService.getAllCategory().subscribe(
-      (secc) => {
-        this.categories = secc;
-      },
-      (error) => {
-        console.log(error);
-      },
-    );
+    this.categories = Retrieval.retrieveCategories(this.categoryService) as Category[];
   }
   isSameCategory(categoryCode): any {
     console.log(this.categories);
@@ -51,22 +45,22 @@ export class AllRecipesComponent implements OnInit {
   filter(): void {
     this.RecipesArr = this.origenalRecipes;
     if (this.name !== '') {
-      this.RecipesArr = this.RecipesArr.filter((r) =>
-        r.Name.includes(this.name),
-      );
+      this._setPrepTime();
     }
     console.log(this.RecipesArr);
     if (this.category !== '') {
-      this.RecipesArr = this.RecipesArr.filter((r) =>
-        this.isSameCategory(r.CategoryCode),
-      );
+      this._setPrepTime()
     }
     console.log(this.RecipesArr);
     if (this.time !== 0) {
-      this.RecipesArr = this.RecipesArr.filter(
-        (r) => r.PreparationTime === this.time,
-      );
+      this._setPrepTime();
     }
     console.log(this.RecipesArr);
+  }
+
+  _setPrepTime() {
+    this.RecipesArr = this.RecipesArr.filter(
+      (r) => r.PreparationTime === this.time,
+    );
   }
 }
