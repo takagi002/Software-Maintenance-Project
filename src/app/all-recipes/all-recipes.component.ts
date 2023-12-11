@@ -45,22 +45,22 @@ export class AllRecipesComponent implements OnInit {
   filter(): void {
     this.RecipesArr = this.origenalRecipes;
     if (this.name !== '') {
-      this.RecipesArr = this.RecipesArr.filter((r) =>
-        r.Name.includes(this.name),
-      );
+      this._setPrepTime();
     }
     console.log(this.RecipesArr);
     if (this.category !== '') {
-      this.RecipesArr = this.RecipesArr.filter((r) =>
-        this.isSameCategory(r.CategoryCode),
-      );
+      this._setPrepTime()
     }
     console.log(this.RecipesArr);
     if (this.time !== 0) {
-      this.RecipesArr = this.RecipesArr.filter(
-        (r) => r.PreparationTime === this.time,
-      );
+      this._setPrepTime();
     }
     console.log(this.RecipesArr);
+  }
+
+  _setPrepTime() {
+    this.RecipesArr = this.RecipesArr.filter(
+      (r) => r.PreparationTime === this.time,
+    );
   }
 }
