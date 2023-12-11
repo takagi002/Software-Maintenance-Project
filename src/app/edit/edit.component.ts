@@ -28,12 +28,11 @@ export class EditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // take care of variables
     this.methods.push('');
     this.Components.push('');
     this.categories = Retrieval.retrieveCategories(this.categoryService) as Category[];
   }
-  // lists care
+
   trakbiy(index: number): any {
     return index;
   }
@@ -61,10 +60,7 @@ export class EditComponent implements OnInit {
     }
   }
   sendForm(): void {
-    this.editedRecipe.DateAdded = new Date();
-    this.Components = this.Components.filter((x) => x !== '');
-    this.editedRecipe.ComponentsList = this.Components.join(',');
-    this.editedRecipe.PreparationMethod = this.methods.filter((x) => x !== '');
+    this._createUpdateRecipeObjects();
     Swal.fire({
       title: 'Do you want to save the changes?',
       showDenyButton: true,
@@ -79,14 +75,16 @@ export class EditComponent implements OnInit {
             Swal.fire('Saved!', '', 'success');
             this.router.navigate(['allRecipes']);
           },
-          (error) => {
-            console.log(error);
-          },
-        );
-      } else if (result.isDenied) {
-        this.location.back();
-      }
+          (error) => { console.log(error); });
+      } else if (result.isDenied) { this.location.back();}
     });
+  }
+
+  _createUpdateRecipeObjects() {
+    this.editedRecipe.DateAdded = new Date();
+    this.Components = this.Components.filter((x) => x !== '');
+    this.editedRecipe.ComponentsList = this.Components.join(',');
+    this.editedRecipe.PreparationMethod = this.methods.filter((x) => x !== '');
   }
 
   protected readonly ValueValidation = ValueValidation;

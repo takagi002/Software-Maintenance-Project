@@ -39,13 +39,7 @@ export class RegisterComponent implements OnInit {
   }
 
   send(): void {
-    const user = new User(
-      -1,
-      this.registerForm.value.name,
-      this.registerForm.value.address,
-      this.registerForm.value.mail,
-      this.registerForm.value.password
-    );
+    const user = this._createNewUser();
     this.userService.addUser(user).subscribe(
       (secc) => {
         console.log(secc);
@@ -71,7 +65,18 @@ export class RegisterComponent implements OnInit {
       }
     });
   }
+
   getUser(user): void {
     sessionStorage.setItem('myUser', JSON.stringify(user));
+  }
+
+  _createNewUser(): User {
+    return new User(
+      -1,
+      this.registerForm.value.name,
+      this.registerForm.value.address,
+      this.registerForm.value.mail,
+      this.registerForm.value.password
+    );
   }
 }
