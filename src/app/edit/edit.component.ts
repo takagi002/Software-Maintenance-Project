@@ -6,6 +6,8 @@ import { RecipeService } from '../recipe.service';
 import Swal from 'sweetalert2';
 import { Location } from '@angular/common';
 import { ValueValidation } from "../utils/validation";
+import {Retrieval} from "../utils/retrieval";
+import {Category} from "../../models/Category";
 
 
 @Component({
@@ -29,14 +31,7 @@ export class EditComponent implements OnInit {
     // take care of variables
     this.methods.push('');
     this.Components.push('');
-    this.categoryService.getAllCategory().subscribe(
-      (secc) => {
-        this.categories = secc;
-      },
-      (error) => {
-        console.log(error);
-      },
-    );
+    this.categories = Retrieval.retrieveCategories(this.categoryService) as Category[];
   }
   // lists care
   trakbiy(index: number): any {

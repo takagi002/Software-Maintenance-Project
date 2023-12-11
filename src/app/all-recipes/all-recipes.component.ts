@@ -3,6 +3,7 @@ import { Category } from 'src/models/Category';
 import { Recipes } from 'src/models/Recipe';
 import { CategoryService } from '../category.service';
 import { RecipeService } from '../recipe.service';
+import {Retrieval} from "../utils/retrieval";
 
 @Component({
   selector: 'app-all-recipes',
@@ -31,14 +32,7 @@ export class AllRecipesComponent implements OnInit {
         console.log(error);
       },
     );
-    this.categoryService.getAllCategory().subscribe(
-      (secc) => {
-        this.categories = secc;
-      },
-      (error) => {
-        console.log(error);
-      },
-    );
+    this.categories = Retrieval.retrieveCategories(this.categoryService) as Category[];
   }
   isSameCategory(categoryCode): any {
     console.log(this.categories);

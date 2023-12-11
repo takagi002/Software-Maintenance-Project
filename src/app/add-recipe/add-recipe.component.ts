@@ -5,6 +5,7 @@ import { CategoryService } from '../category.service';
 import { RecipeService } from '../recipe.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import {Retrieval} from "../utils/retrieval";
 @Component({
   selector: 'app-add-recipe',
   templateUrl: './add-recipe.component.html',
@@ -34,14 +35,7 @@ export class AddRecipeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.categoryService.getAllCategory().subscribe(
-      (secc) => {
-        this.categories = secc;
-      },
-      (error) => {
-        console.log(error);
-      },
-    );
+    this.categories = Retrieval.retrieveCategories(this.categoryService) as Category[];
   }
 
   sendForm(): void {
