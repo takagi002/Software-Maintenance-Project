@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ConfirmValidation } from '../ConfirmValidation';
 import { UserService } from '../user.service';
-import {User} from "../../models/User";
+import { User } from "../../models/User";
 
 @Component({
   selector: 'app-register',
@@ -14,7 +14,7 @@ import {User} from "../../models/User";
 export class RegisterComponent implements OnInit {
   loginName = '';
   registerForm: FormGroup;
-  repitedName = false;
+  repeatedName = false;
   constructor(
     public active: ActivatedRoute,
     public userService: UserService,
@@ -41,22 +41,22 @@ export class RegisterComponent implements OnInit {
   send(): void {
     const user = this._createNewUser();
     this.userService.addUser(user).subscribe(
-      (secc) => {
-        console.log(secc);
-        this.repitedName = false;
-        this.getUser(secc);
+      (user) => {
+        console.log(user);
+        this.repeatedName = false;
+        this.getUser(user);
         this.Pop();
       },
       (error) => {
         console.log(error);
-        this.repitedName = true;
+        this.repeatedName = true;
       },
     );
   }
   Pop(): void {
     Swal.fire({
       title: 'thank you',
-      text: 'you have seccesfully registered ',
+      text: 'you have successfully registered ',
       icon: 'success',
       confirmButtonText: 'to see the recipes',
     }).then((result) => {

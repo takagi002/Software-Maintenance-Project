@@ -2,17 +2,17 @@ import { FormGroup } from '@angular/forms';
 
 export class ConfirmValidation {
   public static confirm(
-    controlerName1: string,
-    controlerName2: string,
-  ): (form: FormGroup) => { confirmationError: { massege: string } } {
+    controllerName1: string,
+    controllerName2: string,
+  ): (form: FormGroup) => { confirmationError: { message: string } } {
     return (form: FormGroup) => {
-      const controler1 = form.controls[controlerName1].value;
-      const controler2 = form.controls[controlerName2].value;
-      if (controler1 === controler2) {
+      const controller1 = form.controls[controllerName1].value;
+      const controller2 = form.controls[controllerName2].value;
+      if (controller1 === controller2) {
         return null;
       }
       return {
-        confirmationError: { massege: 'the passwords must be the same!' },
+        confirmationError: { message: 'the passwords must be the same!' },
       };
     };
   }

@@ -3,7 +3,7 @@ import { Category } from 'src/models/Category';
 import { Recipes } from 'src/models/Recipe';
 import { CategoryService } from '../category.service';
 import { RecipeService } from '../recipe.service';
-import {Retrieval} from "../utils/retrieval";
+import { Retrieval } from "../utils/retrieval";
 
 @Component({
   selector: 'app-all-recipes',
@@ -11,8 +11,8 @@ import {Retrieval} from "../utils/retrieval";
   styleUrls: ['./all-recipes.component.scss'],
 })
 export class AllRecipesComponent implements OnInit {
-  origenalRecipes: Recipes[];
-  RecipesArr: Recipes[];
+  originalRecipes: Recipes[];
+  recipeList: Recipes[];
   categories: Category[] = [];
   name = '';
   category: any = '';
@@ -24,9 +24,9 @@ export class AllRecipesComponent implements OnInit {
 
   ngOnInit(): void {
     this.recipeService.getAllRecipes().subscribe(
-      (secc) => {
-        this.origenalRecipes = secc;
-        this.RecipesArr = secc;
+      (recipes) => {
+        this.originalRecipes = recipes;
+        this.recipeList = recipes;
       },
       (error) => {
         console.log(error);
@@ -36,14 +36,14 @@ export class AllRecipesComponent implements OnInit {
   }
 
   filter(): void {
-    this.RecipesArr = this.origenalRecipes;
+    this.recipeList = this.originalRecipes;
     if (this.name !== '') { this._setPrepTime(); }
     if (this.category !== '') { this._setPrepTime() }
     if (this.time !== 0) { this._setPrepTime(); }
   }
 
   _setPrepTime() {
-    this.RecipesArr = this.RecipesArr.filter(
+    this.recipeList = this.recipeList.filter(
       (r) => r.PreparationTime === this.time,
     );
   }

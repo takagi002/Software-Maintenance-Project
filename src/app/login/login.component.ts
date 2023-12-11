@@ -11,7 +11,7 @@ import { UserService } from '../user.service';
 export class LoginComponent implements OnInit {
   user: User = null;
   isExist = true;
-  isPasswordTrue = true;
+  isPasswordCorrect = true;
   isValid: any;
 
   constructor(
@@ -22,9 +22,9 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   checkAndLogin(pwd, name): void {
-    this.userService.getUserByName(name).subscribe(next => {
-      if (next.Password == pwd) {
-        this.user = next;
+    this.userService.getUserByName(name).subscribe(user => {
+      if (user.Password == pwd) {
+        this.user = user;
         sessionStorage.setItem('myUser', JSON.stringify(this.user));
       }
     })
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['allRecipes']);
     } else {
       if (this.isValid === 2) {
-        this.isPasswordTrue = false;
+        this.isPasswordCorrect = false;
       } else {
         if (this.isValid === 3) {
           this.isExist = false;
