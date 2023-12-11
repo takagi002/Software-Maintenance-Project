@@ -14,11 +14,6 @@ export class RecipeService {
       'http://localhost:3000/api/recipes/allRecipes',
     );
   }
-  getImgSrc(): Observable<any> {
-    return this.http.get<string[]>(
-      'http://localhost:3000/api/recipes/images',
-    );
-  }
   addRecipe(recipe): Observable<any> {
     return this.http.post<any>(
       'http://localhost:3000/api/recipes/add',

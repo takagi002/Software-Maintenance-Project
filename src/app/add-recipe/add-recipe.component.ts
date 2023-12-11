@@ -3,9 +3,9 @@ import { Category } from 'src/models/Category';
 import { Recipes } from 'src/models/Recipe';
 import { CategoryService } from '../category.service';
 import { RecipeService } from '../recipe.service';
-import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
-import {Retrieval} from "../utils/retrieval";
+import { Retrieval } from "../utils/retrieval";
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-add-recipe',
   templateUrl: './add-recipe.component.html',
@@ -13,7 +13,7 @@ import {Retrieval} from "../utils/retrieval";
 })
 export class AddRecipeComponent implements OnInit {
   categories: Category[];
-  Components: string[] = [''];
+  ingredients: string[] = [''];
   methods: string[] = [''];
   addedRecipe: Recipes = new Recipes(
     null,
@@ -43,9 +43,9 @@ export class AddRecipeComponent implements OnInit {
       sessionStorage.getItem('myUser'),
     ).Code;
     this.addedRecipe.DateAdded = new Date();
-    this.Components = this.Components.filter((x) => x !== '');
-    this.addedRecipe.ComponentsList = this.Components.join(',');
-    this.addedRecipe.PreparationMethod = this.methods.filter((x) => x !== '');
+    this.ingredients = this.ingredients.filter((x) => x !== '');
+    this.addedRecipe.IngredientList = this.ingredients.join(',');
+    this.addedRecipe.RecipeSteps = this.methods.filter((x) => x !== '');
     this.recipeService.addRecipe(this.addedRecipe).subscribe(
       () => {
         Swal.fire({

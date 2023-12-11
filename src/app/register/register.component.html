@@ -7,12 +7,12 @@
                      <div class="form-header">
                          <h2 class="text-center">Register</h2>
                      </div>
- 
+
                      <div class="form-row">
                          <div class="input-wrapper">
                              <input type="text" formControlName="name"  autofocus="">
                              <label for="name">name</label>
-                             
+
                          </div>
                          <div class="error" *ngIf="registerForm.controls.name.touched&&registerForm.controls.name.errors">
                             Name is a required field.
@@ -22,7 +22,7 @@
                         <div class="input-wrapper">
                             <input type="text" formControlName="address"  autofocus="">
                             <label for="name">address</label>
-                            
+
                         </div>
                         <div  class="error" *ngIf="registerForm.controls.address.touched&&registerForm.controls.address.errors">
                             Address is a required field.
@@ -32,7 +32,7 @@
                         <div class="input-wrapper">
                             <input type="text" formControlName="mail"  autofocus="">
                             <label for="name">email</label>
-                            
+
                         </div>
                         <div class="error" *ngIf="registerForm.controls.mail.touched&&registerForm.controls.mail.errors?.pattern">
                             Invalid email address.
@@ -45,7 +45,7 @@
                         <div class="input-wrapper">
                             <input type="text"  formControlName="password"   autofocus="">
                             <label for="name">password</label>
-                           
+
                         </div>
                         <div class="error" *ngIf="registerForm.controls.password.touched&&registerForm.controls.password.errors?.maxlength">
                             Password must be at most 8 characters long.
@@ -58,7 +58,7 @@
                         <div class="input-wrapper">
                             <input type="text"  formControlName="confirmPassword" autofocus="">
                             <label for="name">confirm password</label>
-                            
+
                         </div>
                         <div class="error" *ngIf="registerForm.controls.confirmPassword.touched&&registerForm.controls.confirmPassword.errors?.required">
                             This is a required field.                          </div>
@@ -68,7 +68,7 @@
                                {{registerForm.errors.confirmationError.massege}}
                          </div>
                     </div>
-                    <div class="error" *ngIf="repitedName">Username already exists.</div>
+                    <div class="error" *ngIf="repeatedName">Username already exists.</div>
                      <div class="form-action">
                          <div>
                              <button type="submit"   [disabled]="!registerForm.valid"  class="btn btn-primary">

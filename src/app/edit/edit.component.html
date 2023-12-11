@@ -80,11 +80,11 @@
         </form>
         <div>
             <div class="select-name"><label>motheds list :</label></div>
-            <div class="form-row" *ngFor="let method of methods,let in=index,trackBy:trakbiy">
+            <div class="form-row" *ngFor="let method of steps,let in=index,trackBy:trackBy">
 
                 <div class="input-wrapper">
-                    <input type="text" [id]="in" name="{{in}}" [(ngModel)]="methods[in]"
-                        (click)="addInputMethod($event)" (blur)="ValueValidation.checkMethod($event, methods)">
+                    <input type="text" [id]="in" name="{{in}}" [(ngModel)]="steps[in]"
+                        (click)="addInputMethod($event)" (blur)="ValueValidation.checkMethod($event, steps)">
                     <label>method {{in}}</label>
 
                 </div>
@@ -93,11 +93,11 @@
         </div>
         <div>
             <div class="select-name"><label>components list :</label></div>
-            <div class="form-row" *ngFor="let component of Components,let in=index,trackBy:trakbiy">
+            <div class="form-row" *ngFor="let component of ingredients,let in=index,trackBy:trackBy">
 
                 <div class="input-wrapper">
-                    <input type="text" [id]="in" name="{{in}}" [(ngModel)]="Components[in]" (click)="addInput($event)"
-                        (blur)="check($event)">
+                    <input type="text" [id]="in" name="{{in}}" [(ngModel)]="ingredients[in]" (click)="addInput($event)"
+                           (blur)="check($event)">
                     <label>ComponentsList {{in}}</label>
 
                 </div>

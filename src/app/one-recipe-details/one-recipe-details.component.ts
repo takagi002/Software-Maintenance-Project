@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Recipes } from 'src/models/Recipe';
 import { RecipeService } from '../recipe.service';
 
 @Component({
@@ -9,16 +10,16 @@ import { RecipeService } from '../recipe.service';
 })
 export class OneRecipeDetailsComponent implements OnInit {
   @Input()
-  myRecipe;
+  myRecipe: Recipes;
 
   constructor(
     public router: Router,
-    private recipeServies: RecipeService,
+    private recipeService: RecipeService,
   ) {}
 
   ngOnInit(): void {}
   showDetails(): void {
-    this.recipeServies.myRecipe = this.myRecipe;
+    this.recipeService.myRecipe = this.myRecipe;
     this.router.navigate(['recipeDetails']);
   }
 }

@@ -3,12 +3,11 @@ import { Router } from '@angular/router';
 import { Recipes } from 'src/models/Recipe';
 import { CategoryService } from '../category.service';
 import { RecipeService } from '../recipe.service';
-import Swal from 'sweetalert2';
 import { Location } from '@angular/common';
 import { ValueValidation } from "../utils/validation";
-import {Retrieval} from "../utils/retrieval";
-import {Category} from "../../models/Category";
-
+import { Retrieval } from "../utils/retrieval";
+import { Category } from "../../models/Category";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit',
@@ -18,8 +17,8 @@ import {Category} from "../../models/Category";
 export class EditComponent implements OnInit {
   editedRecipe: Recipes = this.recipeService.myRecipe;
   categories: any = [];
-  Components: string[] = this.editedRecipe.ComponentsList.split(',');
-  methods = this.editedRecipe.PreparationMethod;
+  ingredients: string[] = this.editedRecipe.IngredientList.split(',');
+  steps = this.editedRecipe.RecipeSteps;
   constructor(
     private recipeService: RecipeService,
     private categoryService: CategoryService,
@@ -28,35 +27,35 @@ export class EditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.methods.push('');
-    this.Components.push('');
+    this.steps.push('');
+    this.ingredients.push('');
     this.categories = Retrieval.retrieveCategories(this.categoryService) as Category[];
   }
 
-  trakbiy(index: number): any {
+  trackBy(index: number): any {
     return index;
   }
   check(e): void {
-    if (e.target.id !== this.Components.length - 1) {
+    if (e.target.id !== this.ingredients.length - 1) {
       if (e.target.value === '') {
-        this.Components.splice(e.target.id, 1);
+        this.ingredients.splice(e.target.id, 1);
       } else {
-        if (!this.Components.some(() => {})) {
-          this.Components[+e.target.id] = e.target.value;
+        if (!this.ingredients.some(() => {})) {
+          this.ingredients[+e.target.id] = e.target.value;
         }
       }
     }
   }
 
   addInput(e): void {
-    if (e.target.id === this.Components.length - 1) {
-      this.Components.push('');
+    if (e.target.id === this.ingredients.length - 1) {
+      this.ingredients.push('');
     }
   }
 
   addInputMethod(e): void {
-    if (e.target.id === this.methods.length - 1) {
-      this.methods.push('');
+    if (e.target.id === this.steps.length - 1) {
+      this.steps.push('');
     }
   }
   sendForm(): void {
@@ -82,9 +81,9 @@ export class EditComponent implements OnInit {
 
   _createUpdateRecipeObjects() {
     this.editedRecipe.DateAdded = new Date();
-    this.Components = this.Components.filter((x) => x !== '');
-    this.editedRecipe.ComponentsList = this.Components.join(',');
-    this.editedRecipe.PreparationMethod = this.methods.filter((x) => x !== '');
+    this.ingredients = this.ingredients.filter((x) => x !== '');
+    this.editedRecipe.IngredientList = this.ingredients.join(',');
+    this.editedRecipe.RecipeSteps = this.steps.filter((x) => x !== '');
   }
 
   protected readonly ValueValidation = ValueValidation;
