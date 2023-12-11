@@ -15,7 +15,6 @@ import { ValueValidation } from "../utils/validation";
 })
 export class EditComponent implements OnInit {
   editedRecipe: Recipes = this.recipeService.myRecipe;
-  images: any = [];
   categories: any = [];
   Components: string[] = this.editedRecipe.ComponentsList.split(',');
   methods = this.editedRecipe.PreparationMethod;
@@ -30,14 +29,6 @@ export class EditComponent implements OnInit {
     // take care of variables
     this.methods.push('');
     this.Components.push('');
-    this.recipeService.getImgSrc().subscribe(
-      (secc) => {
-        this.images = secc;
-      },
-      (error) => {
-        console.log(error);
-      },
-    );
     this.categoryService.getAllCategory().subscribe(
       (secc) => {
         this.categories = secc;

@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-recipe.component.scss'],
 })
 export class AddRecipeComponent implements OnInit {
-  images: string[];
   categories: Category[];
   Components: string[] = [''];
   methods: string[] = [''];
@@ -35,14 +34,6 @@ export class AddRecipeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.recipeService.getImgSrc().subscribe(
-      (secc) => {
-        this.images = secc;
-      },
-      (error) => {
-        console.log(error);
-      },
-    );
     this.categoryService.getAllCategory().subscribe(
       (secc) => {
         this.categories = secc;
