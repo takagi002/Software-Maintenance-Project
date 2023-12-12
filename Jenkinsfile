@@ -1,49 +1,43 @@
 pipeline {
   agent any
   stages {
-    stage('Build') {
+    stage('Init Project') {
         steps {
             script {
+		bat 'nvm on'
                 bat 'npm install'
+                bat 'npm audit fix --force'
+                bat 'npm start'
             }
         }
     }
-
-    stage('Test') {
-      parallel {
-        stage('Static code analysis') {
-          steps {
-            script {
-              bat 'npm run lint'
-            }
-          }
-        }
-        stage('Unit tests') {
-          steps {
-            script {
-              bat 'ng test'
-            }
-          }
-        }
-        stage('End-To-End tests') {
-          steps {
-            script {
-              bat 'ng e2e'
-            }
-          }
-        }
-        stage('Regression tests') {
-          steps {
-            script {
-              bat 'ng e2e'
-            }
-          }
+    stage('Linting') {
+      steps {
+        script {
+          bat 'npm run lint'
         }
       }
     }
-    Stage ('Cleanup'){
-      steps{
+    stage('Test Runner') {
+      steps {
+        script {
+          bat 'npm test'
+        }
+      }
+    }
+    stage('End-To-End') {
+      steps {
+        script {
+          bat 'npm run e2e'
+        }
+      }
+    }
 
+    stage ('Cleanup'){
+      steps{
+        bat 'rm -rf node_modules'
+        bat 'rm -rf dist'
+        bat 'rm -rf coverage'
       }
     }
   }
